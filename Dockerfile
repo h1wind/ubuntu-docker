@@ -116,5 +116,3 @@ RUN dpkg --add-architecture i386 \
 	&& ./setup.sh \
 	&& echo "# source /opt/gef/gef.py" >> ~/.gdbinit \
 	&& echo "# source /opt/peda/peda.py" >> ~/.gdbinit
-
-ENTRYPOINT [ "/bin/bash" ]
