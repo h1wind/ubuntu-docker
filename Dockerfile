@@ -57,13 +57,7 @@ RUN dpkg --add-architecture i386 \
 		manpages-dev \
 		libtool-bin \
 		gperf \
-		liblzma-dev \
-		zlib1g-dev \
-		liblzo2-dev \
-		libseccomp-dev \
-		libini-config-dev \
 		libssl-dev \
-		libffi-dev \
 		libc6-dbg \
 		libglib2.0-dev \
 		libc6:i386 \
@@ -94,8 +88,6 @@ RUN dpkg --add-architecture i386 \
 		meson \
 		ninja \
 		xortool \
-		python-lzo \
-	&& python3 -m pip install --no-cache-dir ubi_reader \
 	&& gem install one_gadget seccomp-tools \
 	&& cd /opt \
 	&& wget -q https://www.uclibc.org/downloads/binaries/0.9.30.1/cross-compiler-armv4l.tar.bz2 \
