@@ -1,12 +1,13 @@
 FROM ubuntu:20.04
 
 ENV LC_CTYPE C.UTF-8
-ENV DEBIAN_FRONTEND noninteractive
+ENV LANG en_US.UTF-8
 
 RUN dpkg --add-architecture i386 \
-	&& apt-get update -y \
-	&& apt-get upgrade -y \
-	&& apt-get install -y --fix-missing \
+	&& apt-get update -qq > /dev/null \
+	&& DEBIAN_FRONTEND=noninteractive apt-get install -y -qq --fix-missing \
+		apt-transport-https \
+		ca-certificates \
 		apt-utils \
 		locales \
 		tmux \
