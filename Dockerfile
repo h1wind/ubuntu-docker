@@ -56,6 +56,7 @@ RUN dpkg --add-architecture i386 \
 		manpages-dev \
 		libtool-bin \
 		gperf \
+		liblzo2-dev \
 		libseccomp-dev \
 		libini-config-dev \
 		libssl-dev \
@@ -81,6 +82,8 @@ RUN dpkg --add-architecture i386 \
 	&& python2 -m pip install -U pip \
 	&& python2 -m pip install --no-cache-dir \
 	        requests \
+		python-lzo \
+		ubi_reader \
 	&& python3 -m pip install -U pip \
 	&& python3 -m pip install --no-cache-dir \
 		ropgadget \
