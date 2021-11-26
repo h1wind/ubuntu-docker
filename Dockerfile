@@ -5,7 +5,7 @@ ENV LANG en_US.UTF-8
 
 RUN dpkg --add-architecture i386 \
 	&& apt-get update -qq > /dev/null \
-	&& DEBIAN_FRONTEND=noninteractive apt-get install -y -qq --fix-missing \
+	&& DEBIAN_FRONTEND=noninteractive apt-get install -y -qq --fix-missing --no-install-recommends \
 		apt-transport-https \
 		ca-certificates \
 		apt-utils \
@@ -57,6 +57,8 @@ RUN dpkg --add-architecture i386 \
 		manpages-dev \
 		libtool-bin \
 		gperf \
+		liblzma-dev \
+		zlib1g-dev \
 		liblzo2-dev \
 		libseccomp-dev \
 		libini-config-dev \
@@ -72,19 +74,12 @@ RUN dpkg --add-architecture i386 \
 	&& apt-get autoremove -y -qq > /dev/null \
 	&& apt-get clean -y -qq > /dev/null \
 	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
-	&& locale-gen en_US.UTF-8 \
-	&& update-locale \
 	&& wget -q https://bootstrap.pypa.io/pip/2.7/get-pip.py \
-	&& python2 get-pip.py \
-	&& rm get-pip.py \
-	&& gem install \
-		one_gadget \
-		seccomp-tools \
+	&& python2 get-pip.py && rm get-pip.py \
+	&& gem install one_gadget seccomp-tools \
 	&& python2 -m pip install -U pip \
-	&& python2 -m pip install --no-cache-dir \
-	        requests \
-		python-lzo \
-		ubi_reader \
+	&& python2 -m pip install --no-cache-dir requests python-lzo \
+	&& python2 -m pip install --no-cache-dir ubi_reader \
 	&& python3 -m pip install -U pip \
 	&& python3 -m pip install --no-cache-dir \
 		ropgadget \
@@ -116,7 +111,6 @@ RUN dpkg --add-architecture i386 \
 	&& git clone https://github.com/hugsy/gef \
 	&& git clone https://github.com/pwndbg/pwndbg \
 	&& git clone https://github.com/longld/peda \
-	&& cd pwndbg \
-	&& ./setup.sh \
+	&& cd pwndbg && ./setup.sh \
 	&& echo "# source /opt/gef/gef.py" >> ~/.gdbinit \
 	&& echo "# source /opt/peda/peda.py" >> ~/.gdbinit
