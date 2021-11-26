@@ -74,7 +74,7 @@ RUN dpkg --add-architecture i386 \
 	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
 	&& locale-gen en_US.UTF-8 \
 	&& update-locale \
-	&& wget https://bootstrap.pypa.io/pip/2.7/get-pip.py \
+	&& wget -q https://bootstrap.pypa.io/pip/2.7/get-pip.py \
 	&& python2 get-pip.py \
 	&& rm get-pip.py \
 	&& gem install \
@@ -102,13 +102,13 @@ RUN dpkg --add-architecture i386 \
 		ninja \
 		xortool \
 	&& cd /opt \
-	&& wget https://www.uclibc.org/downloads/binaries/0.9.30.1/cross-compiler-armv4l.tar.bz2 \
-	&& wget https://www.uclibc.org/downloads/binaries/0.9.30.1/cross-compiler-armv5l.tar.bz2 \
-	&& wget https://www.uclibc.org/downloads/binaries/0.9.30.1/cross-compiler-i586.tar.bz2 \
-	&& wget https://www.uclibc.org/downloads/binaries/0.9.30.1/cross-compiler-i686.tar.bz2 \
-	&& wget https://www.uclibc.org/downloads/binaries/0.9.30.1/cross-compiler-mips.tar.bz2 \
-	&& wget https://www.uclibc.org/downloads/binaries/0.9.30.1/cross-compiler-mipsel.tar.bz2 \
-	&& wget http://musl.cc/armv6-linux-musleabi-cross.tgz \
+	&& wget -q https://www.uclibc.org/downloads/binaries/0.9.30.1/cross-compiler-armv4l.tar.bz2 \
+	&& wget -q https://www.uclibc.org/downloads/binaries/0.9.30.1/cross-compiler-armv5l.tar.bz2 \
+	&& wget -q https://www.uclibc.org/downloads/binaries/0.9.30.1/cross-compiler-i586.tar.bz2 \
+	&& wget -q https://www.uclibc.org/downloads/binaries/0.9.30.1/cross-compiler-i686.tar.bz2 \
+	&& wget -q https://www.uclibc.org/downloads/binaries/0.9.30.1/cross-compiler-mips.tar.bz2 \
+	&& wget -q https://www.uclibc.org/downloads/binaries/0.9.30.1/cross-compiler-mipsel.tar.bz2 \
+	&& wget -q http://musl.cc/armv6-linux-musleabi-cross.tgz \
 	&& ls *.tar.bz2 | xargs -I {} tar jxvf {} \
 	&& ls *.tgz | xargs -I {} tar zxvf {} \
 	&& rm -rf *.tar.bz2 *.tgz \
