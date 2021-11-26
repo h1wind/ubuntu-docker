@@ -69,8 +69,8 @@ RUN dpkg --add-architecture i386 \
 		libncurses5:i386 \
 		libstdc++6:i386 \
 		libc6-dev-i386 \
-	&& apt-get autoremove -y \
-	&& apt-get clean -y \
+	&& apt-get autoremove -y -qq > /dev/null \
+	&& apt-get clean -y -qq > /dev/null \
 	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
 	&& locale-gen en_US.UTF-8 \
 	&& update-locale \
