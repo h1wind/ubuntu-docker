@@ -95,7 +95,7 @@ RUN dpkg --add-architecture i386 \
 		ninja \
 		xortool \
 		python-lzo \
-		ubi_reader \
+	&& python3 -m pip install --no-cache-dir ubi_reader \
 	&& gem install one_gadget seccomp-tools \
 	&& cd /opt \
 	&& wget -q https://www.uclibc.org/downloads/binaries/0.9.30.1/cross-compiler-armv4l.tar.bz2 \
