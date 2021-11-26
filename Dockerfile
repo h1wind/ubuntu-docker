@@ -76,10 +76,8 @@ RUN dpkg --add-architecture i386 \
 	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
 	&& wget -q https://bootstrap.pypa.io/pip/2.7/get-pip.py \
 	&& python2 get-pip.py && rm get-pip.py \
-	&& gem install one_gadget seccomp-tools \
 	&& python2 -m pip install -U pip \
-	&& python2 -m pip install --no-cache-dir requests python-lzo \
-	&& python2 -m pip install --no-cache-dir ubi_reader \
+	&& python2 -m pip install --no-cache-dir requests \
 	&& python3 -m pip install -U pip \
 	&& python3 -m pip install --no-cache-dir \
 		ropgadget \
@@ -96,6 +94,9 @@ RUN dpkg --add-architecture i386 \
 		meson \
 		ninja \
 		xortool \
+		python-lzo \
+		ubi_reader \
+	&& gem install one_gadget seccomp-tools \
 	&& cd /opt \
 	&& wget -q https://www.uclibc.org/downloads/binaries/0.9.30.1/cross-compiler-armv4l.tar.bz2 \
 	&& wget -q https://www.uclibc.org/downloads/binaries/0.9.30.1/cross-compiler-armv5l.tar.bz2 \
